@@ -9,27 +9,32 @@ startDate=$userInput$startTime
 endDate=$userInput$endTime
 updatedDate=`date +"%a %b %d %H:%M:%S %Y"`
 
-# echo $startDate
-# echo $endDate
-# echo $updatedDate
+# Data -
 
-if [ ! -f BashEvent ]; then
-	touch BashEvent
-fi
+eventNames=("Complete your Project" "Take a bath" "Take a nap" "Clean up your desk" "Feed your dog")
+eventCategories=("Default" "Birthday")
+eventPlaces=("Work Desk" "Bathroom" "Bedroom" "Workplace" "Home")
+eventDescriptions=("An example description for the event" "Another desc for instace")
 
-addattr -t string Event:Status Notified BashEvent
-addattr -t mime BEOS:Type application/x-calendar-event BashEvent
-addattr -t string Event:Name Bash\ Event BashEvent
-addattr -t string Calendar:ID 7c6b695a-2cff-452e-bab0-426c74d485f5 BashEvent
-addattr -t string Event:Category Default BashEvent
-addattr -t string Event:Place Remote BashEvent
-addattr -t string Event:Description BashEvent
-addattr -t time Event:Updated "$updatedDate" BashEvent
-addattr -t time Event:Start "$startDate" BashEvent
-addattr -t time Event:End "$endDate" BashEvent
-addattr -t string Event:Description A\ description\ for\ example  BashEvent
+for i in ${!eventNames[@]}; do
 
-echo Event\ Created\ Successfully!
-echo Here\ are\ the\ attributes\ listed
+	if [ ! -f "${eventNames[$i]}" ]; then
+		touch "${eventNames[$i]}"
+	fi
+	
+	currentCategory=${eventCategories[$i%2]}
+	currentDescription=${eventDescriptions[$i%2]}
 
-listattr -l BashEvent
+	addattr -t string Event:Status Notified "${eventNames[$i]}"
+	addattr -t mime BEOS:Type application/x-calendar-event "${eventNames[$i]}"
+	addattr -t string Event:Name "${eventNames[$i]}" "${eventNames[$i]}"
+	addattr -t string Calendar:ID 7c6b695a-2cff-452e-bab0-426c74d485f5 "${eventNames[$i]}"
+	addattr -t string Event:Category "${currentCategory}" "${eventNames[$i]}"
+	addattr -t string Event:Place "${eventPlaces[$i]}" "${eventNames[$i]}"
+	addattr -t time Event:Updated "$updatedDate" "${eventNames[$i]}"
+	addattr -t time Event:Start "$startDate" "${eventNames[$i]}"
+	addattr -t time Event:End "$endDate" "${eventNames[$i]}"
+	addattr -t string Event:Description "${currentDescription}"  "${eventNames[$i]}"
+done
+
+echo Events\ Created\ Successfully!

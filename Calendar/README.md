@@ -5,7 +5,7 @@ This script is going to be used by my GSoC Project : [Improving the Calendar App
 This script's main purpose is to add some events to a specified day in the calendar, so that the Search & Filter Utility can be tested out!
 
 ---
-### Initial Commit - [0160766]([0160766](https://github.com/harshit-sharma-gits/Bash-Scripts/commit/0160766e9550ad5c23017c742ed8b8f89567ce37)) 
+### Initial Commit - [0160766](https://github.com/harshit-sharma-gits/Bash-Scripts/commit/0160766e9550ad5c23017c742ed8b8f89567ce37) 
 
 Created a simple script to ask user to specify the `day` on which the event is to be added. Also, currently this only adds one event :
 

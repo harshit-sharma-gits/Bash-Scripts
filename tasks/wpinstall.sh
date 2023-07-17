@@ -2,7 +2,7 @@
 
 # Function to install required packages
 install_packages() {
-    echo $"STEP 1: Installing the required packages\n\n"
+    echo $'STEP 1: Installing the required packages\n\n'
     sudo apt update
     sudo apt install -y apache2 mysql-server php libapache2-mod-php php-mysql
     sudo systemctl enable apache2
@@ -12,7 +12,7 @@ install_packages() {
 # Function to configure MySQL and create a WordPress database and user
 configure_mysql() {
     # Create a WordPress database and user
-    echo $"STEP 2: Configuring the MySQL Database\n\n"
+    echo $'STEP 2: Configuring the MySQL Database\n\n'
     sudo systemctl enable mysql
     read -p "Enter your MySQL root password: " rootpass
     read -p "Enter your database name (eg wordpress): " db_name
@@ -27,7 +27,7 @@ configure_mysql() {
 
 # Function to download and configure WordPress
 configure_wordpress() {
-    echo $"STEP 3: Configuring Wordpress\n\n"
+    echo $'STEP 3: Configuring Wordpress\n\n'
     sudo apt install -y wget >> activity.log
     sudo wget -P /var/www/html https://wordpress.org/latest.tar.gz
     sudo tar -xzf /var/www/html/latest.tar.gz -C /var/www/html
@@ -40,7 +40,7 @@ configure_wordpress() {
 
 # Function to enable Apache modules and restart Apache
 configure_apache() {
-    echo $"STEP 4: Finishing touch\n\n"
+    echo $'STEP 4: Finishing touch\n\n'
     sudo systemctl restart apache2
 }
 

@@ -1,5 +1,12 @@
 #!/bin/bash
 
+############################################################
+## Written by - Harshit Sharma <harshits908@gmail.com>    ##
+## THIS BASH SCRIPT CAN BE RUN ON UBUNTU. THIS WILL       ##
+## INSTALL WORDPRESS ALONG WITH MYSQL DATABASE ON         ##
+## YOUR SYSTEM AUTOMATICALLY AND READY-TO-USE             ##
+############################################################
+
 # Function to install required packages
 install_packages() {
     echo $'STEP 1: Installing the required packages\n\n'

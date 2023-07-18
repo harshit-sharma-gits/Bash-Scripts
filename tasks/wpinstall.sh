@@ -58,6 +58,8 @@ main() {
     configure_wordpress
     configure_apache
 
+    sudo ufw allow http
+
     echo "WordPress and MySQL installation and configuration completed successfully."
     echo "You can now access your WordPress site by visiting http://your-server-ip/wordpress"
 }
